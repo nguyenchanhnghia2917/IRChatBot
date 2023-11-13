@@ -40,15 +40,13 @@ export default function Home() {
   };
 
   const sendMessage = (message) => {
-    const url = "https://api.openai.com/v1/chat/completions";
+    const url = "http://127.0.0.1:5000/api/add";
     const header = {
       "Content-Type": "application/json",
-      Authorization: "Bearer  KEYOPENAI",
     };
 
     const data = {
-      model: "gpt-3.5-turbo-1106",
-      messages: [{ role: "user", content: message }],
+      string1: message
     };
     setIsLoanding(true);
     axios
@@ -57,11 +55,15 @@ export default function Home() {
         console.log(response);
         setChatLog((prevChatLog) => [
           ...prevChatLog,
-          { type: "bot", message: response.data.choices[0].message.content },
+          { type: "bot", message: response.data.result },
         ]);
         setIsLoanding(false);
       })
       .catch((error) => {
+        setChatLog((prevChatLog) => [
+          ...prevChatLog,
+          { type: "bot", message: 'Tôi không biết' },
+        ]);
         setIsLoanding(false);
         console.log(error);
       });
