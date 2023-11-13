@@ -8,7 +8,7 @@ import os
 from IPython.display import Markdown, display
 from langchain.vectorstores import FAISS
 from langchain.chat_models import ChatOpenAI
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = ""
 file_path = r'C:\Users\Admin\Downloads\dataIR.txt'
 
 def load_qa_pairs(file_path):
