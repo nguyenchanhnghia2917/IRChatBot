@@ -6,8 +6,9 @@ import styles from "@/styles/Home.module.css";
 import { CodeBlock, dracula, CopyBlock } from "react-code-blocks";
 import { useState } from "react";
 import axios from "axios";
-const inter = Inter({ subsets: ["latin"] });
 
+const inter = Inter({ subsets: ["latin"] });
+const backgroundImageUrl = './public/mhjskdfhsjkdjf.png';
 export default function Home() {
   const [inputValue, setInputValue] = useState("");
   const [chatLog, setChatLog] = useState([]);
@@ -62,7 +63,7 @@ export default function Home() {
       .catch((error) => {
         setChatLog((prevChatLog) => [
           ...prevChatLog,
-          { type: "bot", message: 'Tôi không biết' },
+          { type: "bot", message: "I don't known " },
         ]);
         setIsLoanding(false);
         console.log(error);
@@ -71,13 +72,19 @@ export default function Home() {
   return (
     <>
       <div className=" flex justify-center items-center h-screen  ">
-        <div className="  flex flex-col h-screen bg-gray-900  w-2/4   rounded-lg shadow-lg  ">
-          <h1 className="bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text text-center py-3 font-bold text-6xl">
-            ChatGPT
+        <div className="  flex flex-col h-screen bg-gray-700  w-2/4   rounded-lg shadow-lg  ">
+          <h1 className="bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text text-center py-3 font-bold text-6xl"  style={{ backgroundImage: 'url("/Rainbow Gradient Pink and Purple Virtual Background.png")' }} >
+          JourneyBot
           </h1>
 
-          <div className="bg-gradient-to-r from-blue-500 to-green-500 flex-grow p-6 overflow-y-scroll">
-            <div className="flex flex-col space-y-4">
+          <div className="bg-gradient-to-r from-blue-500 to-black-500 flex-grow p-6 overflow-y-scroll bg-cover bg-center" 
+          style={{ backgroundImage: 'url("/Rainbow Gradient Pink and Purple Virtual Background (1).png")' }}
+         >
+            
+           
+            <div className="flex flex-col space-y-4 ">
+         
+
               {chatLog.map((message, index) => (
                 <div
                   key={index}
@@ -87,12 +94,12 @@ export default function Home() {
                 >
                   <div
                     className={`${
-                      message.type === "user" ? "bg-blue-400" : "bg-gray-800"
-                    } rounded-lg p-4 text-white max-w-sm`}
+                      message.type === "user" ? "bg-blue-300 text-black" : "bg-gray-800 text-white"
+                    } rounded-lg p-4  max-w-sm  `}
                   >
                     {message.type === "bot"
                       ? splitMessage(message.message)
-                      : message.message}
+                      : splitMessage(message.message)}
                   </div>
                 </div>
               ))}
@@ -105,7 +112,6 @@ export default function Home() {
               )}
             </div>
           </div>
-
           <form onSubmit={handleSubmit} className="flex-none p-6">
             <div className="flex rounded-lg border border-gray-700 bg-gray-800">
               <input
@@ -117,8 +123,9 @@ export default function Home() {
               />
               <button
                 type="submit"
-                className="bg-blue-500 rounded-lg px-4 py-2 text-white font-semibold focus:outline-none hover:bg-purple-600 transition-colors duration-300"
-              >
+                className="bg-blue-500 rounded-lg px-4 py-2 text-black font-semibold focus:outline-none hover:bg-purple-600 transition-colors duration-300"
+                style={{ backgroundImage: 'url("/Rainbow Gradient Pink and Purple Virtual Background.png")' }}
+             >
                 Send
               </button>
             </div>
